@@ -91,6 +91,8 @@ func buildPaginationQuery(
 }
 ```
 
+---
+
 ## 여기서 중요한 질문
 
 > "이거는 그냥 조금씩 나눠 읽는 건가, 아니면 내가 마지막으로 본 위치를 기억하는 건가?"
@@ -129,6 +131,8 @@ func buildPaginationQuery(
 - **cursor 방식**: "빨간 모자 쓴 사람 다음부터 볼게요" — 누가 빠지든 상관없이 정확히 그 사람 다음부터 봅니다.
 
 즉, 이 방식은 **마지막으로 본 데이터 자체를 기억하는 방식이 아니라, 몇 번째부터 읽을지를 숫자로 정하는 방식**입니다.
+
+---
 
 ## 그러면 더 좋은 방법은 없을까?
 
@@ -226,6 +230,8 @@ gviz 쿼리에서 쓸 수 있는 것은 `limit`과 `offset`뿐입니다. `WHERE 
 3. **append-only로 운영하기** — 기존 행을 삭제하거나 수정하지 않으면 중복/누락이 거의 발생하지 않습니다
 4. **데이터가 적으면 전체 조회 쓰기** — 수십~수백 행 정도면 `fetchAllAsObjects`로 한 번에 읽는 것이 더 안전합니다
 
+---
+
 ## 언제 좋고, 언제 위험할까?
 
 ### 좋은 경우
@@ -311,6 +317,8 @@ let page = try await api.fetchPageAsObjects(
 | 배열 | `fetchPageAsObjects(...)` → `[[String: String]]` | `fetchPageAsTypedObjects(...)` → `[[String: Any]]` |
 | GoogleSheetsPage | `fetchPageAsObjects(..., headers:)` → `GoogleSheetsPage<[String: String]>` | `fetchPageAsTypedObjects(..., headers:)` → `GoogleSheetsPage<[String: Any]>` |
 
+---
+
 ## `fetchHeaders`는 뭔가요?
 
 ```swift
@@ -332,6 +340,8 @@ let headers = try await api.fetchHeaders(sheetID: sheetID, gid: gid)
 보통 처음 한 번만 호출하고, 이후 페이지 조회에서는 그 값을 계속 재사용합니다.
 
 </details>
+
+---
 
 ## `GoogleSheetsPage`는 뭔가요?
 

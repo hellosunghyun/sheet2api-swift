@@ -40,6 +40,8 @@ JSON은 **데이터를 글자로 정리해서 주고받는 형식**입니다.
 
 </details>
 
+---
+
 ## 그런데 왜 응답이 JSON처럼 안 보일까?
 
 실제로는 이런 식으로 올 수 있습니다.
@@ -60,6 +62,8 @@ google.visualization.Query.setResponse(...)
 | ① Google로부터 받은 원본 | `/*O_o*/`<br>`google.visualization.Query.setResponse({`<br>`  "table": { "cols": [...], "rows": [...] }`<br>`})` | wrapper(`/*O_o*/`, `google.visualization...`)에 감싸져 있어서 바로 읽을 수 없음 |
 | ② wrapper 제거 후 | `{ "table": { "cols": [...], "rows": [...] } }` | `{`부터 `}`까지만 잘라낸 순수 JSON |
 | ③ header + row 변환 후 | `[{ "id": "1", "name": "coffee", "price": "3000" }]` | 첫 행을 이름표(header)로, 나머지를 값으로 짝지어 깔끔한 배열 완성 |
+
+---
 
 ## Swift에서 wrapper 제거하기
 
@@ -91,6 +95,8 @@ private func extractJSON(from raw: String) throws -> Data {
 
 </details>
 
+---
+
 ## row[0], row[1] 대신 이름으로 읽고 싶다면?
 
 > "사람이 읽기 쉬운 이름표 붙은 데이터 모양으로 바꿀 수 없을까?"
@@ -114,6 +120,8 @@ private func extractJSON(from raw: String) throws -> Data {
   { "id": "1", "name": "coffee", "price": "3000" }
 ]
 ```
+
+---
 
 ## 코드에서는 이렇게 바꿉니다
 
@@ -150,6 +158,8 @@ private func convertRowsToObjects<S: Sequence>(_ rows: S, headers: [String]) -> 
 }
 ```
 
+---
+
 ## header가 비어 있거나 중복되면?
 
 <details>
@@ -158,6 +168,8 @@ private func convertRowsToObjects<S: Sequence>(_ rows: S, headers: [String]) -> 
 이 패키지는 비어 있는 header를 `column_0`, `column_1`처럼 보정하고, 중복된 header는 `name`, `name_1`처럼 자동으로 구분합니다.
 
 </details>
+
+---
 
 ## 모든 값이 String으로 바뀌면 불편하지 않을까?
 
@@ -217,6 +229,8 @@ let items = try await api.fetchAllAsTypedObjects(sheetID: sheetID, gid: gid)
 
 </details>
 
+---
+
 ## 결과를 보기 좋게 출력하고 싶다면?
 
 이 패키지는 결과 배열에 `prettyPrintedJSON()` 함수를 제공합니다.
@@ -227,6 +241,8 @@ print(items.prettyPrintedJSON())
 ```
 
 `[[String: String]]`과 `[[String: Any]]` 둘 다 사용할 수 있습니다.
+
+---
 
 ## ✅ 여기까지 했으면
 
@@ -239,6 +255,8 @@ print(items.prettyPrintedJSON())
 - [ ] `prettyPrintedJSON()`으로 결과를 출력해 본 적 있다 (또는 해볼 준비가 됐다)
 
 모두 체크했다면 다음 문서로 넘어가세요! 🎉
+
+---
 
 ## 막힐 때 검색 키워드
 

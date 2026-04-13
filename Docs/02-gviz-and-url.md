@@ -39,6 +39,8 @@ https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/tq?tqx=out:json
 
 이렇게 보면 결국 **"이 스프레드시트의 데이터를 JSON으로 포장해서 줘"** 라는 뜻입니다.
 
+---
+
 ## sheetID와 gid는 뭐지?
 
 > "`sheetID`랑 `gid`는 대체 뭐지?"
@@ -71,6 +73,8 @@ https://docs.google.com/spreadsheets/d/1AbCdEfGhIjKlMnOpQrStUvWxYz1234567890/edi
 - `987654321` 이 `gid`
 
 입니다.
+
+---
 
 ## 그럼 이 값들은 어떻게 찾지?
 
@@ -112,6 +116,8 @@ https://docs.google.com/spreadsheets/d/여기가_sheetID/edit#gid=0
 
 </details>
 
+---
+
 ## `tq`랑 `tqx`는 뭐가 다를까?
 
 <details>
@@ -135,6 +141,8 @@ https://docs.google.com/spreadsheets/d/여기가_sheetID/edit#gid=0
 https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/tq?tqx=out:json&gid={GID}
 ```
 
+---
+
 ## 헤더가 `name`, `price`여도 그대로 쓸 수 있을까?
 
 <details>
@@ -145,6 +153,8 @@ https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/tq?tqx=out:json&gid={GID}
 시트 첫 번째 행에 `name`, `price`라고 적어두더라도, gviz 쿼리(`tq`) 안에서는 `select A, B` 같은 식으로 열을 지정해야 합니다. 하지만 걱정하지 마세요 — 이 패키지가 header 이름을 자동으로 매핑해주는 부분은 다음 문서에서 다룹니다.
 
 </details>
+
+---
 
 ## 막힐 때 검색 키워드
 
